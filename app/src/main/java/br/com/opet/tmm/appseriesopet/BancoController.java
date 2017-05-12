@@ -25,8 +25,6 @@ public class BancoController {
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(CriaBanco.TITULO, serie.getTitulo());
-        valores.put(CriaBanco.TEMPORADAS, serie.getTemporadas());
-        valores.put(CriaBanco.EPISODIOS, serie.getEpisodios());
 
         /*
          * Questão 6: Expique os parâmetros da função insert do SQLiteDatabase.
@@ -62,7 +60,7 @@ public class BancoController {
 
     public Cursor carregaDadoById(int id){
         Cursor cursor;
-        String[] campos =  {banco.ID,banco.TITULO,banco.TEMPORADAS,banco.EPISODIOS};
+        String[] campos =  {banco.ID,banco.TITULO,};
         String where = CriaBanco.ID + "=" + id;
         db = banco.getReadableDatabase();
         cursor = db.query(CriaBanco.TABELA,campos,where, null, null, null, null, null);
@@ -84,8 +82,6 @@ public class BancoController {
 
         valores = new ContentValues();
         valores.put(CriaBanco.TITULO, serie.getTitulo());
-        valores.put(CriaBanco.TEMPORADAS, serie.getTemporadas());
-        valores.put(CriaBanco.EPISODIOS, serie.getEpisodios());
 
         /*
          * Questão 9: Expique os parâmetros da função update do SQLiteDatabase.

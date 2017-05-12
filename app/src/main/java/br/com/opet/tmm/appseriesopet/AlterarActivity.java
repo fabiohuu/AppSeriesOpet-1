@@ -11,8 +11,6 @@ import android.widget.EditText;
 public class AlterarActivity extends Activity {
 
     EditText serie;
-    EditText temporadas;
-    EditText episodios;
     Button alterar;
     Button deletar;
     Cursor cursor;
@@ -29,15 +27,11 @@ public class AlterarActivity extends Activity {
         crud = new BancoController(getBaseContext());
 
         serie = (EditText)findViewById(R.id.editText4);
-        temporadas = (EditText)findViewById(R.id.editText5);
-        episodios = (EditText)findViewById(R.id.editText6);
 
         alterar = (Button)findViewById(R.id.button2);
 
         cursor = crud.carregaDadoById(Integer.parseInt(codigo));
         serie.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.TITULO)));
-        temporadas.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.TEMPORADAS)));
-        episodios.setText(cursor.getString(cursor.getColumnIndexOrThrow(CriaBanco.EPISODIOS)));
 
         alterar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +39,6 @@ public class AlterarActivity extends Activity {
                 Serie serieObj = new Serie();
                 serieObj.set_ID(Integer.parseInt(codigo));
                 serieObj.setTitulo(serie.getText().toString());
-                serieObj.setTemporadas(Integer.parseInt(temporadas.getText().toString()));
-                serieObj.setEpisodios(Integer.parseInt(episodios.getText().toString()));
                 crud.alteraRegistro(serieObj);
                 Intent intent = new Intent(AlterarActivity.this,ConsultaActivity.class);
                 startActivity(intent);

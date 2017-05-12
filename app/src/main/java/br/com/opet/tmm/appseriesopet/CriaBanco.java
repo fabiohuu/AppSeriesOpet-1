@@ -15,11 +15,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CriaBanco extends SQLiteOpenHelper {
 
     public static final String NOME_BANCO = "banco.db";
-    public static final String TABELA = "series";
+    public static final String TABELA = "lista";
     public static final String ID = "_id";
     public static final String TITULO = "titulo";
-    public static final String TEMPORADAS = "temporadas";
-    public static final String EPISODIOS = "episodios";
     public static final int VERSAO = 2;
 
     public CriaBanco(Context context){
@@ -37,8 +35,6 @@ public class CriaBanco extends SQLiteOpenHelper {
         String sql = "CREATE TABLE "+TABELA+"("
                 + ID + " integer primary key autoincrement,"
                 + TITULO + " text,"
-                + TEMPORADAS + " integer,"
-                + EPISODIOS + " integer"
                 +")";
         db.execSQL(sql);
     }

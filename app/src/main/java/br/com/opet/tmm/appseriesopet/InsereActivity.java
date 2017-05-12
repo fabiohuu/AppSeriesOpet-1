@@ -25,14 +25,10 @@ public class InsereActivity extends Activity {
             public void onClick(View v) {
                 BancoController crud = new BancoController(getBaseContext());
                 EditText titulo = (EditText)findViewById(R.id.editText);
-                EditText temporadas = (EditText)findViewById((R.id.editText2));
-                EditText episodios = (EditText)findViewById(R.id.editText3);
                 String tituloString = titulo.getText().toString();
-                int temporadasInt = Integer.parseInt(temporadas.getText().toString());
-                int episodiosInt =  Integer.parseInt(episodios.getText().toString());
                 String resultado;
 
-                Serie serie = new Serie(tituloString,temporadasInt,episodiosInt);
+                Serie serie = new Serie(tituloString);
 
                 resultado = crud.insereDado(serie);
 
